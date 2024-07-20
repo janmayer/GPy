@@ -49,7 +49,7 @@ jobs:
         run: |
           pytest GPy/testing
 
-  build-gpy:
+  build-windows:
     if: github.event_name == 'release'
     strategy:
       matrix:
