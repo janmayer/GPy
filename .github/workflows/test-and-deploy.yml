@@ -28,15 +28,18 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - name: Install dependencies
+      - name: Install build dependencies
         run: |
           pip install setuptools
-          pip install matplotlib
-          pip install pytest
       
       - name: Install lib
         run: |
           python setup.py develop
+      
+      - name: Install test dependencies
+        run: |
+          pip install matplotlib
+          pip install pytest
 
       - name: pytest
         run: |
@@ -57,15 +60,18 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - name: Install dependencies
+      - name: Install build dependencies
         run: |
           pip install setuptools
-          pip install matplotlib
-          pip install pytest
       
       - name: Install lib
         run: |
           python setup.py develop
+
+      - name: Install test dependencies
+        run: |
+          pip install matplotlib
+          pip install pytest
 
       - name: pytest
         run: |
@@ -88,8 +94,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install setuptools
-          pip install matplotlib
-          pip install pytest
       
       - name: Install lib
         run: |
