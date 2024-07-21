@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* update string checks in initialization method for latent variable and put `empirical_samples` init-method on a deprecation path
 
 * update import in `.plotting.matplot_dep.defaults` due to change in matplotlib
 
