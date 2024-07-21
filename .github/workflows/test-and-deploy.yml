@@ -27,12 +27,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
-
-      - name: Install dependencies
-        run: |
-          pip install setuptools
-          pip install matplotlib
-          pip install pytest
       
       - name: Install lib
         run: |
@@ -41,6 +35,11 @@ jobs:
       - name: pytest
         run: |
           pytest GPy/testing
+
+      - name: Install test dependencies
+        run: |
+          pip install matplotlib
+          pip install pytest
 
   test-linux:
     strategy:
@@ -56,16 +55,15 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
-
-      - name: Install dependencies
-        run: |
-          pip install setuptools
-          pip install matplotlib
-          pip install pytest
       
       - name: Install lib
         run: |
           python setup.py develop
+
+      - name: Install test dependencies
+        run: |
+          pip install matplotlib
+          pip install pytest
 
       - name: pytest
         run: |
@@ -84,16 +82,15 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
-
-      - name: Install dependencies
-        run: |
-          pip install setuptools
-          pip install matplotlib
-          pip install pytest
       
       - name: Install lib
         run: |
           python setup.py develop
+
+      - name: Install test dependencies
+        run: |
+          pip install matplotlib
+          pip install pytest
 
       - name: pytest
         run: |
@@ -117,7 +114,6 @@ jobs:
 
       - name: Build lib
         run: |
-          pip install setuptools
           pip install wheel
           python setup.py develop
           python setup.py bdist_wheel
@@ -150,7 +146,6 @@ jobs:
 
       - name: Build lib
         run: |
-          pip install setuptools
           pip install wheel
           python setup.py develop
           python setup.py bdist_wheel
