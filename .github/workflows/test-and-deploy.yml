@@ -93,8 +93,8 @@ jobs:
           python-version: ${{ matrix.python }}
 
       - name: Install build dependencies
-          run: |
-            pip install setuptools
+        run: |
+          pip install setuptools
       
       - name: Install lib
         run: |
