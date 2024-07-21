@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+* update string checks in initialization method for latent variable and put `empirical_samples` init-method on a deprecation path
+
+* update dependencies to `numpy>=1.7.0,<2.0.0`
 
 * update dependencies to `numpy>=1.7.0,<2.0.0`
 

@@ -63,7 +63,7 @@ jobs:
       - name: Install build dependencies
         run: |
           pip install setuptools
-      
+
       - name: Install lib
         run: |
           python setup.py develop
@@ -76,6 +76,7 @@ jobs:
       - name: pytest
         run: |
           pytest GPy/testing
+
   test-macos:
     strategy:
       matrix:
@@ -126,7 +127,6 @@ jobs:
 
       - name: Build lib
         run: |
-          pip install setuptools
           pip install wheel
           python setup.py develop
           python setup.py bdist_wheel
@@ -159,7 +159,6 @@ jobs:
 
       - name: Build lib
         run: |
-          pip install setuptools
           pip install wheel
           python setup.py develop
           python setup.py bdist_wheel
