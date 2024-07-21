@@ -5,17 +5,31 @@ Created on 24 Feb 2014
 """
 
 import numpy as np
+import warnings
 from ..util.pca import PCA
 
 
 def initialize_latent(init, input_dim, Y):
+    """
+    :param init: initialization method for the latent space, 'PCA' or 'random'
+    """
+    # dealing with depcrecated initialization method
+    # should be remove along the next major release
+    if init == "empirical_samples":
+        warnings.warn(
+            "Deprecated initialization method 'empirical_samples'. "
+            "Use 'random' instead.",
+            DeprecationWarning,
+        )
+        init == "random"
+
     Xr = np.asfortranarray(np.random.normal(0, 1, (Y.shape[0], input_dim)))
     if "PCA" == init:
         p = PCA(Y)
         PC = p.project(Y, min(input_dim, Y.shape[1]))
         Xr[: PC.shape[0], : PC.shape[1]] = PC
         var = 0.1 * p.fracs[:input_dim]
-    elif init == "empirical_samples":
+    elif init == "random":
         from ..util.linalg import tdot
         from ..util import diag
 
