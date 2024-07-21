@@ -37,14 +37,14 @@ jobs:
           pip install matplotlib
           pip install pytest
 
-      - name: pytest
-        run: |
-          pytest GPy/testing
-
       - name: Install test dependencies
         run: |
           pip install matplotlib
           pip install pytest
+
+      - name: pytest
+        run: |
+          pytest GPy/testing
 
   test-linux:
     strategy:
@@ -73,6 +73,7 @@ jobs:
       - name: pytest
         run: |
           pytest GPy/testing
+
   test-macos:
     strategy:
       matrix:
