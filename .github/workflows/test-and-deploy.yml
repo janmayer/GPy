@@ -209,7 +209,6 @@ jobs:
 
     - name: Move wheelhouse wheel files to dist
       run: |
-        rm dist/*
         mv wheelhouse/* dist/
         rmdir wheelhouse
 
@@ -217,7 +216,7 @@ jobs:
       run: ls -R dist
 
     - name: Archive build artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v1
       with:
         name: dist-artifacts-manylinux-${{ matrix.python }}
         path: dist/*
