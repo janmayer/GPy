@@ -216,7 +216,7 @@ jobs:
     - name: List contents of dist
       run: ls -R dist
 
-     - name: Get the name of the wheel file
+    - name: Get the name of the wheel file
       id: get-wheel-name
       run: echo "::set-output name=wheel-name::$(ls dist/*.whl)"
 
