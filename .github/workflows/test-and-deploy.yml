@@ -175,7 +175,7 @@ jobs:
           path: dist/*
 
   build-linux:
-    if: github.event_name == 'release'
+    # if: github.event_name == 'release'
     strategy:
         matrix:
           python: ['cp39-cp39', 'cp310-cp310', 'cp311-cp311', 'cp312-cp312']
@@ -185,7 +185,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        # uses: actions/checkout@v2
+        run: |
+          yum update
+          yum install -y git
+          git clone --depth=1 https://github.com/${{ github.repository }}.git .
+          git checkout ${{ github.sha }}
 
       - name: Install build dependencies
         run: |
@@ -222,11 +227,20 @@ jobs:
       - name: List contents of dist
         run: ls -R dist
 
-      - name: Archive build artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: dist-artifacts-manylinux-${{ matrix.python }}
-          path: dist/*
+      - name: Upload artifact using curl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -H "Authorization: token $GITHUB_TOKEN" \
+               -H "Content-Type: application/zip" \
+               --data-binary @dist-artifacts-manylinux-${{ matrix.python }}.tar.gz \
+               "https://uploads.github.com/repos/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/dist-artifacts-manylinux-${{ matrix.python }}?name=dist-artifacts-manylinux-${{ matrix.python }}.tar.gz"
+
+      # - name: Archive build artifacts
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: dist-artifacts-manylinux-${{ matrix.python }}
+      #     path: dist/*
 
   deploy:
     runs-on: ubuntu-latest
