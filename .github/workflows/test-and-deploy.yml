@@ -209,17 +209,22 @@ jobs:
 
     - name: Move wheelhouse wheel files to dist
       run: |
+        rm dist/*
         mv wheelhouse/* dist/
         rmdir wheelhouse
 
     - name: List contents of dist
       run: ls -R dist
 
+     - name: Get the name of the wheel file
+      id: get-wheel-name
+      run: echo "::set-output name=wheel-name::$(ls dist/*.whl)"
+
     - name: Archive build artifacts
       uses: actions/upload-artifact@v1
       with:
         name: dist-artifacts-manylinux-${{ matrix.python }}
-        path: dist/*
+        path: ${{ steps.get-wheel-name.outputs.wheel-name }}
 
   deploy-test:
     runs-on: ubuntu-latest
