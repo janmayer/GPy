@@ -237,6 +237,9 @@ jobs:
                -H "Content-Type: application/zip" \
                --data-binary @dist-artifacts-manylinux-${{ matrix.python }}.tar.gz \
                "https://uploads.github.com/repos/${{ github.repository }}/actions/artifacts/${{ github.run_id }}/dist-artifacts-manylinux-${{ matrix.python }}?name=dist-artifacts-manylinux-${{ matrix.python }}.tar.gz"
+        with:
+          name: dist-artifacts-manylinux-${{ matrix.python }}
+          path: dist/*
 
       # - name: Archive build artifacts
       #   uses: actions/upload-artifact@v1
@@ -267,13 +270,25 @@ jobs:
         with:
           path: dist
 
+      - name: List all downloaded artifacts
+        run: |
+          echo "Listing all downloaded artifacts:"
+          ls -lh dist
+
       - name: Create dist directory
         run: mkdir -p dist
+
+      - name: List tar files before extraction
+        run: |
+          echo "Listing all tar files before extraction:"
+          find dist -name "*.tar.gz"
 
       - name: Extract tar.gz files
         run: |
           for artifact in dist/*; do
             if [[ "$artifact" == *.tar.gz ]]; then
+              echo "Extracting $artifact"
+              tar -tzf "$artifact"
               tar -xzf "$artifact" -C dist
               rm "$artifact"
             fi
@@ -290,6 +305,17 @@ jobs:
             mv "$subdirectory"* dist/
             rm -r "$subdirectory"
             echo "Moved files from '$dir_name' to 'dist/'"
+          done
+
+      - name: Move files from subdirectories
+        run: |
+          for subdirectory in dist/*/; do
+            if [ -d "$subdirectory" ]; then
+              dir_name=$(basename "$subdirectory")
+              mv "$subdirectory"* dist/
+              rm -r "$subdirectory"
+              echo "Moved files from '$dir_name' to 'dist/'"
+            fi
           done
 
       - name: Inspect wheel files
