@@ -232,6 +232,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          tar -czf dist-artifacts-linux-${{ matrix.python }}.tar.gz -C dist .
           curl -H "Authorization: token $GITHUB_TOKEN" \
                -H "Content-Type: application/zip" \
                --data-binary @dist-artifacts-manylinux-${{ matrix.python }}.tar.gz \
