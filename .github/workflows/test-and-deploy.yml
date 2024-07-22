@@ -272,9 +272,15 @@ jobs:
       - name: Extract tar.gz files
         run: |
           for artifact in dist/*; do
-            tar -xzf "$artifact" -C dist
-            rm "$artifact"
+            if [[ "$artifact" == *.tar.gz ]]; then
+              tar -xzf "$artifact" -C dist
+              rm "$artifact"
+            fi
           done
+
+      - name: Inspect wheel files
+        run: |
+          ls -R dist
 
       - name: Move files from subdirectories
         run: |
