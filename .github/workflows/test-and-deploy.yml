@@ -269,6 +269,13 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
+      - name: Extract tar.gz files
+        run: |
+          for artifact in dist/*; do
+            tar -xzf "$artifact" -C dist
+            rm "$artifact"
+          done
+
       - name: Move files from subdirectories
         run: |
           for subdirectory in dist/*/; do
