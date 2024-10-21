@@ -24,19 +24,19 @@ class StdPeriodic(Kern):
 
     .. math::
 
-       k(x,y) = \theta_1 \exp \left[  - \frac{1}{2} \sum_{i=1}^{input\_dim}
-       \left( \frac{\sin(\frac{\pi}{T_i} (x_i - y_i) )}{l_i} \right)^2 \right] }
+       k(x,y) = \theta_1 \\exp \\left[  - \frac{1}{2} \\sum_{i=1}^{input\\_dim}
+       \\left( \frac{\\sin(\frac{\\pi}{T_i} (x_i - y_i) )}{l_i} \right)^2 \right] }
 
     :param input_dim: the number of input dimensions
     :type input_dim: int
     :param variance: the variance :math:`\theta_1` in the formula above
     :type variance: float
-    :param period: the vector of periods :math:`\T_i`. If None then 1.0 is assumed.
+    :param period: the vector of periods :math:`\\T_i`. If None then 1.0 is assumed.
     :type period: array or list of the appropriate size (or float if there is only one period parameter)
-    :param lengthscale: the vector of lengthscale :math:`\l_i`. If None then 1.0 is assumed.
+    :param lengthscale: the vector of lengthscale :math:`\\l_i`. If None then 1.0 is assumed.
     :type lengthscale: array or list of the appropriate size (or float if there is only one lengthscale parameter)
     :param ARD1: Auto Relevance Determination with respect to period.
-        If equal to "False" one single period parameter :math:`\T_i` for
+        If equal to "False" one single period parameter :math:`\\T_i` for
         each dimension is assumed, otherwise there is one lengthscale
         parameter per dimension.
     :type ARD1: Boolean

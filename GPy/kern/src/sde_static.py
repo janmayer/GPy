@@ -20,7 +20,7 @@ class sde_White(White):
 
     .. math::
 
-       k(x,y) = \alpha*\delta(x-y)
+       k(x,y) = \alpha*\\delta(x-y)
 
     """
     

@@ -684,7 +684,7 @@ class TestMisc:
         warp_m = GPy.models.WarpedGP(
             X, Y
         )  # , kernel=warp_k)#, warping_function=warp_f)
-        warp_m[".*\.d"].constrain_fixed(1.0)
+        warp_m[r".*\.d"].constrain_fixed(1.0)
         warp_m.optimize_restarts(
             parallel=False, robust=False, num_restarts=5, max_iters=max_iters
         )

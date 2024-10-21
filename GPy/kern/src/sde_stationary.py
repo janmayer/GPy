@@ -29,7 +29,7 @@ class sde_RBF(RBF):
 
     .. math::
 
-        k(r) = \sigma^2 \exp \\bigg(- \\frac{1}{2} r^2 \\bigg) \\ \\ \\ \\  \text{ where  } r = \sqrt{\sum_{i=1}^{input dim} \frac{(x_i-y_i)^2}{\ell_i^2} }
+        k(r) = \\sigma^2 \\exp \\bigg(- \\frac{1}{2} r^2 \\bigg) \\ \\ \\ \\  \text{ where  } r = \\sqrt{\\sum_{i=1}^{input dim} \frac{(x_i-y_i)^2}{\\ell_i^2} }
 
     """
 
@@ -204,7 +204,7 @@ class sde_Exponential(Exponential):
 
     .. math::
 
-       k(r) = \sigma^2 \exp \\bigg(- \\frac{1}{2} r \\bigg) \\ \\ \\ \\  \text{ where  } r = \sqrt{\sum_{i=1}^{input dim} \frac{(x_i-y_i)^2}{\ell_i^2} }
+       k(r) = \\sigma^2 \\exp \\bigg(- \\frac{1}{2} r \\bigg) \\ \\ \\ \\  \text{ where  } r = \\sqrt{\\sum_{i=1}^{input dim} \frac{(x_i-y_i)^2}{\\ell_i^2} }
 
     """
 
@@ -259,7 +259,7 @@ class sde_RatQuad(RatQuad):
 
     .. math::
 
-       k(r) = \sigma^2 \\bigg( 1 + \\frac{r^2}{2} \\bigg)^{- \alpha} \\ \\ \\ \\  \text{ where  } r = \sqrt{\sum_{i=1}^{input dim} \frac{(x_i-y_i)^2}{\ell_i^2} }
+       k(r) = \\sigma^2 \\bigg( 1 + \\frac{r^2}{2} \\bigg)^{- \alpha} \\ \\ \\ \\  \text{ where  } r = \\sqrt{\\sum_{i=1}^{input dim} \frac{(x_i-y_i)^2}{\\ell_i^2} }
 
     """
 

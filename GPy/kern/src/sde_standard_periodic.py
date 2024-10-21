@@ -24,8 +24,8 @@ class sde_StdPeriodic(StdPeriodic):
 
     .. math::
 
-       k(x,y) = \theta_1 \exp \left[  - \frac{1}{2} {}\sum_{i=1}^{input\_dim}
-       \left( \frac{\sin(\frac{\pi}{\lambda_i} (x_i - y_i) )}{l_i} \right)^2 \right] }
+       k(x,y) = \theta_1 \\exp \\left[  - \frac{1}{2} {}\\sum_{i=1}^{input\\_dim}
+       \\left( \frac{\\sin(\frac{\\pi}{\\lambda_i} (x_i - y_i) )}{l_i} \right)^2 \right] }
 
     """
 
@@ -177,7 +177,7 @@ def seriescoeff(m=6, lengthScale=1.0, magnSigma2=1.0, true_covariance=False):
     Calculate the coefficients q_j^2 for the covariance function
     approximation:
 
-        k(\tau) =  \sum_{j=0}^{+\infty} q_j^2 \cos(j\omega_0 \tau)
+        k(\tau) =  \\sum_{j=0}^{+\\infty} q_j^2 \\cos(j\\omega_0 \tau)
 
     Reference is:
 

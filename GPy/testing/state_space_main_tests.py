@@ -159,7 +159,7 @@ def generate_brownian_data(
 ):
     """
     Generate brownian data - data from Brownian motion.
-    First point is always 0, and \Beta(0) = 0  - standard conditions for Brownian motion.
+    First point is always 0, and \\Beta(0) = 0  - standard conditions for Brownian motion.
 
     Input:
     --------------------------------

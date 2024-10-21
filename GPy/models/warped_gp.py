@@ -146,7 +146,7 @@ class WarpedGP(GP):
         the jacobian of the warping function here.
 
         .. math:
-            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\mu_{*}\\sigma^{2}_{*})
+            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\\mu_{*}\\sigma^{2}_{*})
 
         :param x_test: test locations (x_{*})
         :type x_test: (Nx1) array

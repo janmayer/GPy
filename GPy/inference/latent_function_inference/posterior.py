@@ -178,8 +178,8 @@ class Posterior(object):
         """
         The inverse of the woodbury matrix, in the gaussian likelihood case it is defined as
         $$
-        (K_{xx} + \Sigma_{xx})^{-1}
-        \Sigma_{xx} := \texttt{Likelihood.variance / Approximate likelihood covariance}
+        (K_{xx} + \\Sigma_{xx})^{-1}
+        \\Sigma_{xx} := \texttt{Likelihood.variance / Approximate likelihood covariance}
         $$
         """
         if self._woodbury_inv is None:
@@ -200,8 +200,8 @@ class Posterior(object):
         """
         Woodbury vector in the gaussian likelihood case only is defined as
         $$
-        (K_{xx} + \Sigma)^{-1}Y
-        \Sigma := \texttt{Likelihood.variance / Approximate likelihood covariance}
+        (K_{xx} + \\Sigma)^{-1}Y
+        \\Sigma := \texttt{Likelihood.variance / Approximate likelihood covariance}
         $$
         """
         if self._woodbury_vector is None:

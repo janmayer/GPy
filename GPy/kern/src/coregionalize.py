@@ -19,7 +19,7 @@ except ImportError:
 
 
 class Coregionalize(Kern):
-    """
+    r"""
     Covariance function for intrinsic/linear coregionalization models
 
     This covariance has the form:
