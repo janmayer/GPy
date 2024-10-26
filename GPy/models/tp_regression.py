@@ -185,9 +185,9 @@ class TPRegression(Model):
 
         .. math::
             p(f*|X*, X, Y) = \\int^{\\inf}_{\\inf} p(f*|f,X*)p(f|X,Y) df
-                        = MVN\\left(\nu + N,f*| K_{x*x}(K_{xx})^{-1}Y,
-                        \frac{\nu + \beta - 2}{\nu + N - 2}K_{x*x*} - K_{xx*}(K_{xx})^{-1}K_{xx*}\right)
-            \nu := \texttt{Degrees of freedom}
+                        = MVN\\left(\\nu + N,f*| K_{x*x}(K_{xx})^{-1}Y,
+                        \\frac{\\nu + \\beta - 2}{\\nu + N - 2}K_{x*x*} - K_{xx*}(K_{xx})^{-1}K_{xx*}\\right)
+            \\nu := \\texttt{Degrees of freedom}
         """
         mu, var = self.posterior._raw_predict(kern=self.kern if kern is None else kern, Xnew=Xnew,
                                               pred_var=self._predictive_variable, full_cov=full_cov)

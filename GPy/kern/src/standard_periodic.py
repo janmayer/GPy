@@ -24,12 +24,12 @@ class StdPeriodic(Kern):
 
     .. math::
 
-       k(x,y) = \theta_1 \\exp \\left[  - \frac{1}{2} \\sum_{i=1}^{input\\_dim}
-       \\left( \frac{\\sin(\frac{\\pi}{T_i} (x_i - y_i) )}{l_i} \right)^2 \right] }
+       k(x,y) = \\theta_1 \\exp \\left[  - \\frac{1}{2} \\sum_{i=1}^{input\\_dim}
+       \\left( \\frac{\\sin(\\frac{\\pi}{T_i} (x_i - y_i) )}{l_i} \\right)^2 \\right] }
 
     :param input_dim: the number of input dimensions
     :type input_dim: int
-    :param variance: the variance :math:`\theta_1` in the formula above
+    :param variance: the variance :math:`\\theta_1` in the formula above
     :type variance: float
     :param period: the vector of periods :math:`\\T_i`. If None then 1.0 is assumed.
     :type period: array or list of the appropriate size (or float if there is only one period parameter)
@@ -177,7 +177,7 @@ class StdPeriodic(Kern):
         Returns only diagonal elements.
         """
         return np.zeros(X.shape[0])
-    
+
     def dK2_dXdX2(self, X, X2, dimX, dimX2):
         """
         Compute the second derivative of K with respect to:
@@ -578,9 +578,9 @@ class StdPeriodic(Kern):
             X2 = X
         dX = -np.pi*((dL_dK*K)[:,:,None]*np.sin(2*np.pi/self.period*(X[:,None,:] - X2[None,:,:]))/(2.*np.square(self.lengthscale)*self.period)).sum(1)
         return dX
-    
+
     def gradients_X_diag(self, dL_dKdiag, X):
         return np.zeros(X.shape)
-    
+
     def input_sensitivity(self, summarize=True):
         return self.variance*np.ones(self.input_dim)/self.lengthscale**2

@@ -259,7 +259,7 @@ class Stationary(Kern):
         the returned array is of shape [NxNxQxQ].
 
         ..math:
-            \frac{\\partial^2 K}{\\partial X2 ^2} = - \frac{\\partial^2 K}{\\partial X\\partial X2}
+            \\frac{\\partial^2 K}{\\partial X2 ^2} = - \\frac{\\partial^2 K}{\\partial X\\partial X2}
 
         ..returns:
             dL2_dXdX2:  [NxMxQxQ] in the cov=True case, or [NxMxQ] in the cov=False case,
@@ -295,7 +295,7 @@ class Stationary(Kern):
         Given the derivative of the objective dL_dK, compute the second derivative of K wrt X:
 
         ..math:
-          \frac{\\partial^2 K}{\\partial X\\partial X}
+          \\frac{\\partial^2 K}{\\partial X\\partial X}
 
         ..returns:
             dL2_dXdX: [NxQxQ]
@@ -423,7 +423,7 @@ class OU(Stationary):
 
     .. math::
 
-       k(r) = \\sigma^2 \\exp(- r) \\ \\ \\ \\  \\text{ where  } r = \\sqrt{\\sum_{i=1}^{\text{input_dim}} \\frac{(x_i-y_i)^2}{\\ell_i^2} }
+       k(r) = \\sigma^2 \\exp(- r) \\ \\ \\ \\  \\text{ where  } r = \\sqrt{\\sum_{i=1}^{\\text{input_dim}} \\frac{(x_i-y_i)^2}{\\ell_i^2} }
 
     """
 

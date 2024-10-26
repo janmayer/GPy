@@ -121,7 +121,7 @@ class Linear(Kern):
         the returned array is of shape [NxNxQxQ].
 
         ..math:
-            \frac{\\partial^2 K}{\\partial X2 ^2} = - \frac{\\partial^2 K}{\\partial X\\partial X2}
+            \\frac{\\partial^2 K}{\\partial X2 ^2} = - \\frac{\\partial^2 K}{\\partial X\\partial X2}
 
         ..returns:
             dL2_dXdX2:  [NxMxQxQ] for X [NxQ] and X2[MxQ] (X2 is X if, X2 is None)

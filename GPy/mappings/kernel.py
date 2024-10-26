@@ -12,13 +12,13 @@ class Kernel(Mapping):
 
     .. math::
 
-       f(\\mathbf{x}) = \\sum_i \alpha_i k(\\mathbf{z}_i, \\mathbf{x})
+       f(\\mathbf{x}) = \\sum_i \\alpha_i k(\\mathbf{z}_i, \\mathbf{x})
 
     or for multple outputs
 
     .. math::
 
-       f_i(\\mathbf{x}) = \\sum_j \alpha_{i,j} k(\\mathbf{z}_i, \\mathbf{x})
+       f_i(\\mathbf{x}) = \\sum_j \\alpha_{i,j} k(\\mathbf{z}_i, \\mathbf{x})
 
 
     :param input_dim: dimension of input.

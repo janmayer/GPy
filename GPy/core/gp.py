@@ -194,7 +194,7 @@ class GP(Model):
     # Make sure to name this variable and the predict functions will "just work"
     # In maths the predictive variable is:
     #         K_{xx} - K_{xp}W_{pp}^{-1}K_{px}
-    #         W_{pp} := \texttt{Woodbury inv}
+    #         W_{pp} := \\texttt{Woodbury inv}
     #         p := _predictive_variable
 
     @property
@@ -298,7 +298,7 @@ class GP(Model):
         .. math::
             p(f*|X*, X, Y) = \\int^{\\inf}_{\\inf} p(f*|f,X*)p(f|X,Y) df
                         = N(f*| K_{x*x}(K_{xx} + \\Sigma)^{-1}Y, K_{x*x*} - K_{xx*}(K_{xx} + \\Sigma)^{-1}K_{xx*}
-            \\Sigma := \texttt{Likelihood.variance / Approximate likelihood covariance}
+            \\Sigma := \\texttt{Likelihood.variance / Approximate likelihood covariance}
         """
         mu, var = self.posterior._raw_predict(kern=self.kern if kern is None else kern, Xnew=Xnew, pred_var=self._predictive_variable, full_cov=full_cov)
         if self.mean_function is not None:

@@ -19,18 +19,18 @@ except ImportError:
 
 
 class Coregionalize(Kern):
-    r"""
+    """
     Covariance function for intrinsic/linear coregionalization models
 
     This covariance has the form:
 
     .. math::
-       \mathbf{B} = \mathbf{W}\mathbf{W}^\intercal + \mathrm{diag}(kappa)
+       \\mathbf{B} = \\mathbf{W}\\mathbf{W}^\\intercal + \\mathrm{diag}(kappa)
 
     An intrinsic/linear coregionalization covariance function of the form:
 
     .. math::
-       k_2(x, y)=\mathbf{B} k(x, y)
+       k_2(x, y)=\\mathbf{B} k(x, y)
 
     it is obtained as the tensor product between a covariance function
     k(x, y) and B.

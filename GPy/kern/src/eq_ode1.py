@@ -15,7 +15,7 @@ class EQ_ODE1(Kern):
 
     This outputs of this kernel have the form
     .. math::
-       \frac{\text{d}y_j}{\text{d}t} = \\sum_{i=1}^R w_{j,i} u_i(t-\\delta_j) - d_jy_j(t)
+       \\frac{\\text{d}y_j}{\\text{d}t} = \\sum_{i=1}^R w_{j,i} u_i(t-\\delta_j) - d_jy_j(t)
 
     where :math:`R` is the rank of the system, :math:`w_{j,i}` is the sensitivity of the :math:`j`th output to the :math:`i`th latent function, :math:`d_j` is the decay rate of the :math:`j`th output and :math:`u_i(t)` are independent latent Gaussian processes goverened by an exponentiated quadratic covariance.
 
