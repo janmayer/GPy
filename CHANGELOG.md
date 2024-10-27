@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+* fix invalid escape sequence #1011 [janmayer]
 
 ## v1.13.2 (2024-07-21)
 * update string checks in initialization method for latent variable and put `empirical_samples` init-method on a deprecation path
