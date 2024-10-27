@@ -4002,10 +4002,10 @@ class ContDescrStateSpace(DescreteStateSpace):
         """
         Linear Time-Invariant Stochastic Differential Equation (LTI SDE):
 
-            dx(t) = F x(t) dt + L d \beta  ,where
+            dx(t) = F x(t) dt + L d \\beta  ,where
 
                 x(t): (vector) stochastic process
-                \beta: (vector) Brownian motion process
+                \\beta: (vector) Brownian motion process
                 F, L: (time invariant) matrices of corresponding dimensions
                 Qc: covariance of noise.
 
@@ -4022,7 +4022,7 @@ class ContDescrStateSpace(DescreteStateSpace):
         F,L: LTI SDE matrices of corresponding dimensions
 
         Qc: matrix (n,n)
-            Covarince between different dimensions of noise \beta.
+            Covarince between different dimensions of noise \\beta.
             n is the dimensionality of the noise.
 
         dt: double or iterable

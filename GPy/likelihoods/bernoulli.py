@@ -243,7 +243,7 @@ class Bernoulli(Likelihood):
         assert np.atleast_1d(inv_link_f).shape == np.atleast_1d(y).shape
         #d3logpdf_dlink3 = 2*(y/(inv_link_f**3) - (1-y)/((1-inv_link_f)**3))
         state = np.seterr(divide='ignore')
-        # TODO check y \in {0, 1} or {-1, 1}
+        # TODO check y \\in {0, 1} or {-1, 1}
         d3logpdf_dlink3 = np.where(y==1, 2./(inv_link_f**3), -2./((1.-inv_link_f)**3))
         np.seterr(**state)
         return d3logpdf_dlink3

@@ -194,7 +194,7 @@ class GP(Model):
     # Make sure to name this variable and the predict functions will "just work"
     # In maths the predictive variable is:
     #         K_{xx} - K_{xp}W_{pp}^{-1}K_{px}
-    #         W_{pp} := \texttt{Woodbury inv}
+    #         W_{pp} := \\texttt{Woodbury inv}
     #         p := _predictive_variable
 
     @property
@@ -283,7 +283,7 @@ class GP(Model):
 
     def log_likelihood(self):
         """
-        The log marginal likelihood of the model, :math:`p(\mathbf{y})`, this is the objective function of the model being optimised
+        The log marginal likelihood of the model, :math:`p(\\mathbf{y})`, this is the objective function of the model being optimised
         """
         return self._log_marginal_likelihood
 
@@ -296,9 +296,9 @@ class GP(Model):
         diagonal of the covariance is returned.
 
         .. math::
-            p(f*|X*, X, Y) = \int^{\inf}_{\inf} p(f*|f,X*)p(f|X,Y) df
-                        = N(f*| K_{x*x}(K_{xx} + \Sigma)^{-1}Y, K_{x*x*} - K_{xx*}(K_{xx} + \Sigma)^{-1}K_{xx*}
-            \Sigma := \texttt{Likelihood.variance / Approximate likelihood covariance}
+            p(f*|X*, X, Y) = \\int^{\\inf}_{\\inf} p(f*|f,X*)p(f|X,Y) df
+                        = N(f*| K_{x*x}(K_{xx} + \\Sigma)^{-1}Y, K_{x*x*} - K_{xx*}(K_{xx} + \\Sigma)^{-1}K_{xx*}
+            \\Sigma := \\texttt{Likelihood.variance / Approximate likelihood covariance}
         """
         mu, var = self.posterior._raw_predict(kern=self.kern if kern is None else kern, Xnew=Xnew, pred_var=self._predictive_variable, full_cov=full_cov)
         if self.mean_function is not None:
@@ -702,7 +702,7 @@ class GP(Model):
         Calculation of the log predictive density
 
         .. math:
-            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\mu_{*}\\sigma^{2}_{*})
+            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\\mu_{*}\\sigma^{2}_{*})
 
         :param x_test: test locations (x_{*})
         :type x_test: (Nx1) array
@@ -718,7 +718,7 @@ class GP(Model):
         Calculation of the log predictive density by sampling
 
         .. math:
-            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\mu_{*}\\sigma^{2}_{*})
+            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\\mu_{*}\\sigma^{2}_{*})
 
         :param x_test: test locations (x_{*})
         :type x_test: (Nx1) array
@@ -734,24 +734,24 @@ class GP(Model):
 
     def _raw_posterior_covariance_between_points(self, X1, X2):
         """
-        Computes the posterior covariance between points. Does not account for 
+        Computes the posterior covariance between points. Does not account for
         normalization or likelihood
 
         :param X1: some input observations
         :param X2: other input observations
 
-        :returns: 
+        :returns:
             cov: raw posterior covariance: k(X1,X2) - k(X1,X) G^{-1} K(X,X2)
         """
         return self.posterior.covariance_between_points(self.kern, self.X, X1, X2)
 
 
-    def posterior_covariance_between_points(self, X1, X2, Y_metadata=None, 
-                                            likelihood=None, 
+    def posterior_covariance_between_points(self, X1, X2, Y_metadata=None,
+                                            likelihood=None,
                                             include_likelihood=True):
         """
-        Computes the posterior covariance between points. Includes likelihood 
-        variance as well as normalization so that evaluation at (x,x) is consistent 
+        Computes the posterior covariance between points. Includes likelihood
+        variance as well as normalization so that evaluation at (x,x) is consistent
         with model.predict
 
         :param X1: some input observations
@@ -762,8 +762,8 @@ class GP(Model):
                                    the predicted underlying latent function f.
         :type include_likelihood: bool
 
-        :returns: 
-            cov: posterior covariance, a Numpy array, Nnew x Nnew if 
+        :returns:
+            cov: posterior covariance, a Numpy array, Nnew x Nnew if
             self.output_dim == 1, and Nnew x Nnew x self.output_dim otherwise.
         """
 
@@ -774,7 +774,7 @@ class GP(Model):
             mean, _ = self._raw_predict(X1, full_cov=True)
             if likelihood is None:
                 likelihood = self.likelihood
-            _, cov = likelihood.predictive_values(mean, cov, full_cov=True, 
+            _, cov = likelihood.predictive_values(mean, cov, full_cov=True,
                                                   Y_metadata=Y_metadata)
 
         if self.normalizer is not None:

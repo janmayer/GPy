@@ -134,10 +134,10 @@ class posteriorParams(posteriorParamsBase):
         B = np.eye(num_data) + Sroot_tilde_K * tau_tilde_root[None,:]
         L = jitchol(B)
         V, _ = dtrtrs(L, Sroot_tilde_K, lower=1)
-        Sigma = K - np.dot(V.T,V) #K - KS^(1/2)BS^(1/2)K = (K^(-1) + \Sigma^(-1))^(-1)
+        Sigma = K - np.dot(V.T,V) #K - KS^(1/2)BS^(1/2)K = (K^(-1) + \\Sigma^(-1))^(-1)
 
         aux_alpha , _ = dpotrs(L, tau_tilde_root * (np.dot(K, ga_approx.v) + mean_prior), lower=1)
-        alpha = ga_approx.v - tau_tilde_root * aux_alpha #(K + Sigma^(\tilde))^(-1) (/mu^(/tilde) - /mu_p)
+        alpha = ga_approx.v - tau_tilde_root * aux_alpha #(K + Sigma^(\\tilde))^(-1) (/mu^(/tilde) - /mu_p)
         mu = np.dot(K, alpha) + mean_prior
 
         return posteriorParams(mu=mu, Sigma=Sigma, L=L)
@@ -151,8 +151,8 @@ class posteriorParamsDTC(posteriorParamsBase):
         DSYR(LLT,Kmn[:,i].copy(),delta_tau)
         L = jitchol(LLT)
         V,info = dtrtrs(L,Kmn,lower=1)
-        self.Sigma_diag = np.maximum(np.sum(V*V,-2), np.finfo(float).eps)  #diag(K_nm (L L^\top)^(-1)) K_mn
-        si = np.sum(V.T*V[:,i],-1) #(V V^\top)[:,i]
+        self.Sigma_diag = np.maximum(np.sum(V*V,-2), np.finfo(float).eps)  #diag(K_nm (L L^\\top)^(-1)) K_mn
+        si = np.sum(V.T*V[:,i],-1) #(V V^\\top)[:,i]
         self.mu += (delta_v-delta_tau*self.mu[i])*si
         #mu = np.dot(Sigma, v_tilde)
 
@@ -391,11 +391,11 @@ class EP(EPBase, ExactGaussianInference):
 
 
         aux_alpha , _ = dpotrs(post_params.L, tau_tilde_root * (np.dot(K, ga_approx.v) +  mean_prior), lower=1)
-        alpha = (ga_approx.v - tau_tilde_root * aux_alpha)[:,None] #(K + Sigma^(\tilde))^(-1) (/mu^(/tilde) -  /mu_p)
+        alpha = (ga_approx.v - tau_tilde_root * aux_alpha)[:,None] #(K + Sigma^(\\tilde))^(-1) (/mu^(/tilde) -  /mu_p)
 
         LWi, _ = dtrtrs(post_params.L, np.diag(tau_tilde_root), lower=1)
         Wi = np.dot(LWi.T,LWi)
-        symmetrify(Wi) #(K + Sigma^(\tilde))^(-1)
+        symmetrify(Wi) #(K + Sigma^(\\tilde))^(-1)
 
         dL_dK = 0.5 * (tdot(alpha) - Wi)
         dL_dthetaL = likelihood.ep_gradients(Y, cav_params.tau, cav_params.v, np.diag(dL_dK), Y_metadata=Y_metadata, quad_mode='gh')
@@ -530,7 +530,7 @@ class EPDTC(EPBase, VarDTC):
         #initial values - Gaussian factors
         #Initial values - Posterior distribution parameters: q(f|X,Y) = N(f|mu,Sigma)
         LLT0 = Kmm.copy()
-        Lm = jitchol(LLT0) #K_m = L_m L_m^\top
+        Lm = jitchol(LLT0) #K_m = L_m L_m^\\top
         Vm,info = dtrtrs(Lm, Kmn,lower=1)
         # Lmi = dtrtri(Lm)
         # Kmmi = np.dot(Lmi.T,Lmi)

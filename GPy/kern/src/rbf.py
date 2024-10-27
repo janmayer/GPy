@@ -16,7 +16,7 @@ class RBF(Stationary):
 
     .. math::
 
-       k(r) = \sigma^2 \exp \\bigg(- \\frac{1}{2} r^2 \\bigg)
+       k(r) = \\sigma^2 \\exp \\bigg(- \\frac{1}{2} r^2 \\bigg)
 
     """
     _support_GPU = True

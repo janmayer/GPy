@@ -130,7 +130,7 @@ class Likelihood(Parameterized):
         Calculation of the log predictive density
 
         .. math:
-            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\mu_{*}\\sigma^{2}_{*})
+            p(y_{*}|D) = p(y_{*}|f_{*})p(f_{*}|\\mu_{*}\\sigma^{2}_{*})
 
         :param y_test: test observations (y_{*})
         :type y_test: (Nx1) array
@@ -199,7 +199,7 @@ class Likelihood(Parameterized):
 
         .. math:
             log p(y_{*}|D) = log 1/num_samples prod^{S}_{s=1} p(y_{*}|f_{*s})
-            f_{*s} ~ p(f_{*}|\mu_{*}\\sigma^{2}_{*})
+            f_{*s} ~ p(f_{*}|\\mu_{*}\\sigma^{2}_{*})
 
         :param y_test: test observations (y_{*})
         :type y_test: (Nx1) array

@@ -269,8 +269,8 @@ class TestMisc:
         from GPy.core.parameterization.variational import NormalPosterior
 
         X_pred = NormalPosterior(X_pred_mu, X_pred_var)
-        # mu = \int f(x)q(x|mu,S) dx = \int 2x.q(x|mu,S) dx = 2.mu
-        # S = \int (f(x) - m)^2q(x|mu,S) dx = \int f(x)^2 q(x) dx - mu**2 = 4(mu^2 + S) - (2.mu)^2 = 4S
+        # mu = \\int f(x)q(x|mu,S) dx = \\int 2x.q(x|mu,S) dx = 2.mu
+        # S = \\int (f(x) - m)^2q(x|mu,S) dx = \\int f(x)^2 q(x) dx - mu**2 = 4(mu^2 + S) - (2.mu)^2 = 4S
         Y_mu_true = 2 * X_pred_mu
         Y_var_true = 4 * X_pred_var
         Y_mu_pred, Y_var_pred = m.predict_noiseless(X_pred)
@@ -684,7 +684,7 @@ class TestMisc:
         warp_m = GPy.models.WarpedGP(
             X, Y
         )  # , kernel=warp_k)#, warping_function=warp_f)
-        warp_m[".*\.d"].constrain_fixed(1.0)
+        warp_m[r".*\.d"].constrain_fixed(1.0)
         warp_m.optimize_restarts(
             parallel=False, robust=False, num_restarts=5, max_iters=max_iters
         )

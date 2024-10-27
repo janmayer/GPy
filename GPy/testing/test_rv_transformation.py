@@ -47,7 +47,7 @@ class TestRVTransformation:
         # ax.hist(phi_s, normed=True, bins=100, alpha=0.25, label='Histogram')
         # ax.plot(phi, kde(phi), '--', linewidth=2, label='Kernel Density Estimation')
         # ax.plot(phi, pdf_phi, ':', linewidth=2, label='Transformed PDF')
-        # ax.set_xlabel(r'transformed $\theta$', fontsize=16)
+        # ax.set_xlabel(r'transformed $\\theta$', fontsize=16)
         # ax.set_ylabel('PDF', fontsize=16)
         # plt.legend(loc='best')
         # plt.show(block=True)

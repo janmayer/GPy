@@ -78,7 +78,7 @@ class StudentT(Likelihood):
         Log Likelihood Function given link(f)
 
         .. math::
-            \\ln p(y_{i}|\lambda(f_{i})) = \\ln \\Gamma\\left(\\frac{v+1}{2}\\right) - \\ln \\Gamma\\left(\\frac{v}{2}\\right) - \\ln \\sqrt{v \\pi\\sigma^{2}} - \\frac{v+1}{2}\\ln \\left(1 + \\frac{1}{v}\\left(\\frac{(y_{i} - \lambda(f_{i}))^{2}}{\\sigma^{2}}\\right)\\right)
+            \\ln p(y_{i}|\\lambda(f_{i})) = \\ln \\Gamma\\left(\\frac{v+1}{2}\\right) - \\ln \\Gamma\\left(\\frac{v}{2}\\right) - \\ln \\sqrt{v \\pi\\sigma^{2}} - \\frac{v+1}{2}\\ln \\left(1 + \\frac{1}{v}\\left(\\frac{(y_{i} - \\lambda(f_{i}))^{2}}{\\sigma^{2}}\\right)\\right)
 
         :param inv_link_f: latent variables (link(f))
         :type inv_link_f: Nx1 array
@@ -107,7 +107,7 @@ class StudentT(Likelihood):
         Gradient of the log likelihood function at y, given link(f) w.r.t link(f)
 
         .. math::
-            \\frac{d \\ln p(y_{i}|\lambda(f_{i}))}{d\\lambda(f)} = \\frac{(v+1)(y_{i}-\lambda(f_{i}))}{(y_{i}-\lambda(f_{i}))^{2} + \\sigma^{2}v}
+            \\frac{d \\ln p(y_{i}|\\lambda(f_{i}))}{d\\lambda(f)} = \\frac{(v+1)(y_{i}-\\lambda(f_{i}))}{(y_{i}-\\lambda(f_{i}))^{2} + \\sigma^{2}v}
 
         :param inv_link_f: latent variables (f)
         :type inv_link_f: Nx1 array
@@ -129,7 +129,7 @@ class StudentT(Likelihood):
         The hessian will be 0 unless i == j
 
         .. math::
-            \\frac{d^{2} \\ln p(y_{i}|\lambda(f_{i}))}{d^{2}\\lambda(f)} = \\frac{(v+1)((y_{i}-\lambda(f_{i}))^{2} - \\sigma^{2}v)}{((y_{i}-\lambda(f_{i}))^{2} + \\sigma^{2}v)^{2}}
+            \\frac{d^{2} \\ln p(y_{i}|\\lambda(f_{i}))}{d^{2}\\lambda(f)} = \\frac{(v+1)((y_{i}-\\lambda(f_{i}))^{2} - \\sigma^{2}v)}{((y_{i}-\\lambda(f_{i}))^{2} + \\sigma^{2}v)^{2}}
 
         :param inv_link_f: latent variables inv_link(f)
         :type inv_link_f: Nx1 array
@@ -154,7 +154,7 @@ class StudentT(Likelihood):
         Third order derivative log-likelihood function at y given link(f) w.r.t link(f)
 
         .. math::
-            \\frac{d^{3} \\ln p(y_{i}|\lambda(f_{i}))}{d^{3}\\lambda(f)} = \\frac{-2(v+1)((y_{i} - \lambda(f_{i}))^3 - 3(y_{i} - \lambda(f_{i})) \\sigma^{2} v))}{((y_{i} - \lambda(f_{i})) + \\sigma^{2} v)^3}
+            \\frac{d^{3} \\ln p(y_{i}|\\lambda(f_{i}))}{d^{3}\\lambda(f)} = \\frac{-2(v+1)((y_{i} - \\lambda(f_{i}))^3 - 3(y_{i} - \\lambda(f_{i})) \\sigma^{2} v))}{((y_{i} - \\lambda(f_{i})) + \\sigma^{2} v)^3}
 
         :param inv_link_f: latent variables link(f)
         :type inv_link_f: Nx1 array
@@ -175,7 +175,7 @@ class StudentT(Likelihood):
         Gradient of the log-likelihood function at y given f, w.r.t variance parameter (t_noise)
 
         .. math::
-            \\frac{d \\ln p(y_{i}|\lambda(f_{i}))}{d\\sigma^{2}} = \\frac{v((y_{i} - \lambda(f_{i}))^{2} - \\sigma^{2})}{2\\sigma^{2}(\\sigma^{2}v + (y_{i} - \lambda(f_{i}))^{2})}
+            \\frac{d \\ln p(y_{i}|\\lambda(f_{i}))}{d\\sigma^{2}} = \\frac{v((y_{i} - \\lambda(f_{i}))^{2} - \\sigma^{2})}{2\\sigma^{2}(\\sigma^{2}v + (y_{i} - \\lambda(f_{i}))^{2})}
 
         :param inv_link_f: latent variables link(f)
         :type inv_link_f: Nx1 array
@@ -199,7 +199,7 @@ class StudentT(Likelihood):
         Derivative of the dlogpdf_dlink w.r.t variance parameter (t_noise)
 
         .. math::
-            \\frac{d}{d\\sigma^{2}}(\\frac{d \\ln p(y_{i}|\lambda(f_{i}))}{df}) = \\frac{-2\\sigma v(v + 1)(y_{i}-\lambda(f_{i}))}{(y_{i}-\lambda(f_{i}))^2 + \\sigma^2 v)^2}
+            \\frac{d}{d\\sigma^{2}}(\\frac{d \\ln p(y_{i}|\\lambda(f_{i}))}{df}) = \\frac{-2\\sigma v(v + 1)(y_{i}-\\lambda(f_{i}))}{(y_{i}-\\lambda(f_{i}))^2 + \\sigma^2 v)^2}
 
         :param inv_link_f: latent variables inv_link_f
         :type inv_link_f: Nx1 array
@@ -220,7 +220,7 @@ class StudentT(Likelihood):
         Gradient of the hessian (d2logpdf_dlink2) w.r.t variance parameter (t_noise)
 
         .. math::
-            \\frac{d}{d\\sigma^{2}}(\\frac{d^{2} \\ln p(y_{i}|\lambda(f_{i}))}{d^{2}f}) = \\frac{v(v+1)(\\sigma^{2}v - 3(y_{i} - \lambda(f_{i}))^{2})}{(\\sigma^{2}v + (y_{i} - \lambda(f_{i}))^{2})^{3}}
+            \\frac{d}{d\\sigma^{2}}(\\frac{d^{2} \\ln p(y_{i}|\\lambda(f_{i}))}{d^{2}f}) = \\frac{v(v+1)(\\sigma^{2}v - 3(y_{i} - \\lambda(f_{i}))^{2})}{(\\sigma^{2}v + (y_{i} - \\lambda(f_{i}))^{2})^{3}}
 
         :param inv_link_f: latent variables link(f)
         :type inv_link_f: Nx1 array
