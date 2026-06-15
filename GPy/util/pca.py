@@ -118,7 +118,7 @@ class PCA(object):
             labels = numpy.zeros(X.shape[0])
         ulabels = []
         for lab in labels:
-            if not lab in ulabels:
+            if lab not in ulabels:
                 ulabels.append(lab)
         nlabels = len(ulabels)
         if colors is None:

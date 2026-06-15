@@ -92,7 +92,7 @@ class Symbolic_core():
                 raise ValueError('Variable ' + var + ' was specified as cacheable but is not in expression. Expected to find symbols of the form ' + var.lower() + '_0 to represent ' + var)
 
         # things that aren't cacheable are assumed to be parameters.
-        self.variables['theta'] = sorted([e for e in vars if not e in self.cacheable_vars],key=lambda e:e.name)
+        self.variables['theta'] = sorted([e for e in vars if e not in self.cacheable_vars],key=lambda e:e.name)
 
     def _set_derivatives(self, derivatives):
         # these are arguments for computing derivatives.

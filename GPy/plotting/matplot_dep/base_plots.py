@@ -44,7 +44,7 @@ def gpplot(
 
     # here's the box
     kwargs["linewidth"] = 0.5
-    if not "alpha" in kwargs.keys():
+    if "alpha" not in kwargs.keys():
         kwargs["alpha"] = 0.3
     plots.append(
         axes.fill(
@@ -70,7 +70,7 @@ def gradient_fill(x, percentiles, ax=None, fignum=None, **kwargs):
     # here's the box
     if "linewidth" not in kwargs:
         kwargs["linewidth"] = 0.5
-    if not "alpha" in kwargs.keys():
+    if "alpha" not in kwargs.keys():
         kwargs["alpha"] = 1.0 / (len(percentiles))
 
     # pop where from kwargs
@@ -165,10 +165,10 @@ def gperrors(x, mu, lower, upper, edgecol=None, ax=None, fignum=None, **kwargs):
     if edgecol is None:
         edgecol = "#3300FF"
 
-    if not "alpha" in kwargs.keys():
+    if "alpha" not in kwargs.keys():
         kwargs["alpha"] = 1.0
 
-    if not "lw" in kwargs.keys():
+    if "lw" not in kwargs.keys():
         kwargs["lw"] = 1.0
 
     plots.append(
