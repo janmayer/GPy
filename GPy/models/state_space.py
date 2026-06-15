@@ -284,8 +284,8 @@ class StateSpace(Model):
 
             # Form discrete-time model
             #(A, Q) = self.lti_disc(F,L,Qc,dt[:,k])
-            A = As[:,:,index[k]];
-            Q = Qs[:,:,index[k]];
+            A = As[:,:,index[k]]
+            Q = Qs[:,:,index[k]]
 
             # Prediction step
             MF[:,k] = A.dot(MF[:,k-1])
@@ -320,8 +320,8 @@ class StateSpace(Model):
 
             # Form discrete-time model
             #(A, Q) = self.lti_disc(F,L,Qc,dt[:,1-k])
-            A = As[:,:,index[1-k]];
-            Q = Qs[:,:,index[1-k]];
+            A = As[:,:,index[1-k]]
+            Q = Qs[:,:,index[1-k]]
 
             # Smoothing step
             LL = linalg.cho_factor(A.dot(PS[:,:,-k]).dot(A.T)+Q)
@@ -353,8 +353,8 @@ class StateSpace(Model):
 
             # Form discrete-time model
             #(A,Q) = self.lti_disc(F,L,Qc,dt[:,k])
-            A = As[:,:,index[k]];
-            Q = Qs[:,:,index[k]];
+            A = As[:,:,index[k]]
+            Q = Qs[:,:,index[k]]
 
             # Prediction step
             m = A.dot(m)
@@ -415,7 +415,7 @@ class StateSpace(Model):
         for k in range(0,steps):
 
             # The previous time step
-            dt_old = dt;
+            dt_old = dt
 
             # The time discretization step length
             if k>0:
@@ -478,7 +478,7 @@ class StateSpace(Model):
             for j in range(0,nparam):
 
                 # Innovation covariance derivative
-                dS = H.dot(dP[:,:,j]).dot(H.T) + dR[:,:,j];
+                dS = H.dot(dP[:,:,j]).dot(H.T) + dR[:,:,j]
 
                 # Evaluate the energy derivative for j
                 eg[j] = eg[j]                           \
@@ -548,7 +548,7 @@ class StateSpace(Model):
         for k in range(0,steps):
 
             # The previous time step
-            dt_old = dt;
+            dt_old = dt
 
             # The time discretization step length
             if k>0:
@@ -582,7 +582,7 @@ class StateSpace(Model):
 
                     # Define W and G
                     W = L.dot(dQc[:,:,j]).dot(L.T)
-                    G = dF[:,:,j];
+                    G = dF[:,:,j]
 
                     # The second matrix for the matrix factor decomposition
                     FFF[:n,:n]         =  F
@@ -636,7 +636,7 @@ class StateSpace(Model):
             for j in range(0,nparam):
 
                 # Innovation covariance derivative
-                dS = H.dot(dP[:,:,j]).dot(H.T) + dR[:,:,j];
+                dS = H.dot(dP[:,:,j]).dot(H.T) + dR[:,:,j]
 
                 # Evaluate the energy derivative for j
                 eg[j] = eg[j]                           \

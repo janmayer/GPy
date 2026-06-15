@@ -525,7 +525,7 @@ def dkron(A,dA,B,dB, operation='prod'):
 
     for k in range(dA_param_num):
         if operation == 'prod':
-            dC[:,:,k] = np.kron(dA[:,:,k],B);
+            dC[:,:,k] = np.kron(dA[:,:,k],B)
         else:
             dC[:,:,k] = np.kron(dA[:,:,k],np.eye( B.shape[0] ))
 

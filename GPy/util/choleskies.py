@@ -28,7 +28,7 @@ def _flat_to_triang_pure(flat_mat):
         count = 0
         for m in range(M):
             for mm in range(m+1):
-                ret[d,m, mm] = flat_mat[count, d];
+                ret[d,m, mm] = flat_mat[count, d]
                 count = count+1
     return ret
 
@@ -44,7 +44,7 @@ def _triang_to_flat_pure(L):
     N = M*(M+1)//2
     flat = np.empty((N, D))
     for d in range(D):
-        count = 0;
+        count = 0
         for m in range(M):
             for mm in range(m+1):
                 flat[count,d] = L[d, m, mm]

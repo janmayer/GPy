@@ -76,7 +76,7 @@ def randomize(self, rand_gen=None, *args, **kwargs):
     self.optimizer_array = x  # makes sure all of the tied parameters get the same init (since there's only one prior object...)
     # now draw from prior where possible
     x = self.param_array.copy()
-    [np.put(x, ind, p.rvs(ind.size)) for p, ind in self.priors.items() if not p is None]
+    [np.put(x, ind, p.rvs(ind.size)) for p, ind in self.priors.items() if p is not None]
     unfixlist = np.ones((self.size,),dtype=bool)
     from paramz.transformations import __fixed__
     unfixlist[self.constraints[__fixed__]] = False
