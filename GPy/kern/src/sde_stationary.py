@@ -10,7 +10,6 @@ from .stationary import Exponential
 from .stationary import RatQuad
 
 import numpy as np
-import scipy as sp
 
 try:
     from scipy.linalg import solve_continuous_lyapunov as lyap

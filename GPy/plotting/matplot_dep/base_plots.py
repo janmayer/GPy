@@ -3,7 +3,6 @@
 from matplotlib import pyplot as plt
 import numpy as np
 
-from .util import align_subplot_array, align_subplots
 
 
 def ax_default(fignum, ax):

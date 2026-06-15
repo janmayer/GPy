@@ -5,7 +5,7 @@ import numpy as np
 
 from ..core.sparse_gp_mpi import SparseGP_MPI
 from .. import kern
-from ..util.linalg import jitchol, backsub_both_sides, tdot, dtrtrs, dtrtri, pdinv
+from ..util.linalg import jitchol, backsub_both_sides, tdot, dtrtri
 from ..util import diag
 from ..core.parameterization import Param
 from ..likelihoods import Gaussian
@@ -13,7 +13,7 @@ from ..inference.latent_function_inference.var_dtc_parallel import VarDTC_miniba
 from ..inference.latent_function_inference.posterior import Posterior
 from GPy.core.parameterization.variational import VariationalPrior
 from ..core.parameterization.parameterized import Parameterized
-from paramz.transformations import Logexp, Logistic, __fixed__
+from paramz.transformations import Logexp, Logistic
 log_2_pi = np.log(2*np.pi)
 
 class VarDTC_minibatch_IBPLFM(VarDTC_minibatch):

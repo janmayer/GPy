@@ -36,7 +36,6 @@ class Model(ParamzModel, Priorizable):
         input_dict = copy.deepcopy(input_dict)
         model_class = input_dict.pop('class')
         input_dict["name"] = str(input_dict["name"])
-        import GPy
         model_class = eval(model_class)
         return model_class._build_from_input_dict(input_dict, data)
 

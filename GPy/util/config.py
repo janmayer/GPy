@@ -14,7 +14,6 @@ except ImportError:
     import configparser
 
     config = configparser.ConfigParser()
-    from configparser import NoOptionError
 
 # This is the default configuration file that always needs to be present.
 default_file = os.path.abspath(

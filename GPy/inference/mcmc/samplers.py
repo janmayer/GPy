@@ -11,7 +11,7 @@ try:
     #if available
     import cPickle as pickle
 except ImportError:
-    import pickle
+    pass
 
 
 class Metropolis_Hastings(object):

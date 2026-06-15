@@ -2,11 +2,10 @@
 # Licensed under the BSD 3-clause license (see LICENSE.txt)
 
 import numpy as np
-from scipy import stats, special
-import scipy as sp
+from scipy import stats
 from . import link_functions
-from scipy import stats, integrate
-from scipy.special import gammaln, gamma
+from scipy import stats
+from scipy.special import gammaln
 from .likelihood import Likelihood
 from ..core.parameterization import Param
 from paramz.transformations import Logexp

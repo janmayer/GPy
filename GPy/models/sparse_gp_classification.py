@@ -7,7 +7,6 @@ from ..core import SparseGP
 from .. import likelihoods
 from .. import kern
 from ..inference.latent_function_inference import EPDTC
-from copy import deepcopy
 
 class SparseGPClassification(SparseGP):
     """

@@ -438,7 +438,6 @@ def lee_yeast_ChIP(data_set='lee_yeast_ChIP'):
     if not data_available(data_set):
         download_data(data_set)
     from pandas import read_csv
-    import zipfile
     dir_path = os.path.join(data_path, data_set)
     filename = os.path.join(dir_path, 'binding_by_gene.tsv')
     S = read_csv(filename, header=1, index_col=0, sep='\t')
@@ -554,7 +553,6 @@ http://nbviewer.ipython.org/github/sahuguet/notebooks/blob/master/GoogleTrends%2
 
     columns = df.columns
     terms = len(query_terms)
-    import datetime
     X = np.asarray([(row, i) for i in range(terms) for row in df.index])
     Y = np.asarray([[df.ix[row][query_terms[i]]] for i in range(terms) for row in df.index ])
     output_info = columns[1:]

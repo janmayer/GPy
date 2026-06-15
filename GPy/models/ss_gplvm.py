@@ -8,7 +8,7 @@ from .. import kern
 from ..core.parameterization import Param
 from ..likelihoods import Gaussian
 from GPy.core.parameterization.variational import SpikeAndSlabPrior, SpikeAndSlabPosterior,VariationalPrior
-from ..inference.latent_function_inference.var_dtc_parallel import update_gradients, VarDTC_minibatch
+from ..inference.latent_function_inference.var_dtc_parallel import VarDTC_minibatch
 from ..kern.src.psi_comp.ssrbf_psi_gpucomp import PSICOMP_SSRBF_GPU
 
 class IBPPosterior(SpikeAndSlabPosterior):
@@ -60,7 +60,7 @@ class IBPPosterior(SpikeAndSlabPosterior):
 class IBPPrior(VariationalPrior):
     def __init__(self, input_dim, alpha =2., name='IBPPrior', **kw):
         super(IBPPrior, self).__init__(name=name, **kw)
-        from paramz.transformations import Logexp, __fixed__  
+        from paramz.transformations import __fixed__  
         self.input_dim = input_dim
         self.variance = 1.
         self.alpha = Param('alpha', alpha, __fixed__)

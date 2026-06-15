@@ -8,7 +8,7 @@ from GPy.core.parameterization.variational import VariationalPosterior
 import numpy as np
 from . import LatentFunctionInference
 log_2_pi = np.log(2*np.pi)
-import logging, itertools
+import logging
 logger = logging.getLogger('vardtc')
 
 class VarDTC(LatentFunctionInference):

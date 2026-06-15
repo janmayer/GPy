@@ -4,7 +4,6 @@
 from __future__ import print_function
 import abc
 import os
-import numpy as np
 
 class Output(object):
     __metaclass__ = abc.ABCMeta

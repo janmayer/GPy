@@ -2,15 +2,12 @@
 # Licensed under the BSD 3-clause license (see LICENSE.txt)
 
 import numpy as np
-from scipy import stats,special
-import scipy as sp
 from . import link_functions
-from ..util.misc import chain_1, chain_2, chain_3, blockify_dhess_dtheta, blockify_third, blockify_hessian, safe_exp
+from ..util.misc import chain_1, chain_2, chain_3, blockify_third, blockify_hessian, safe_exp
 from ..util.quad_integrate import quadgk_int
 from scipy.integrate import quad
 from functools import partial
 
-import warnings
 
 from ..core.parameterization import Parameterized
 
@@ -74,7 +71,6 @@ class Likelihood(Parameterized):
         likelihood_class = input_dict.pop('class')
         input_dict["name"] = str(input_dict["name"])
         name = input_dict.pop('name')
-        import GPy
         likelihood_class = eval(likelihood_class)
         return likelihood_class._build_from_input_dict(likelihood_class, input_dict)
 

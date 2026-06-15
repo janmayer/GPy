@@ -73,7 +73,6 @@ class _Norm(object):
         import copy
         input_dict = copy.deepcopy(input_dict)
         normalizer_class = input_dict.pop('class')
-        import GPy
         normalizer_class = eval(normalizer_class)
         return normalizer_class._build_from_input_dict(normalizer_class, input_dict)
 

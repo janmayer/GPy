@@ -4,7 +4,6 @@
 import numpy as np
 from ..core.parameterization import Parameterized, Param
 from paramz.transformations import Logexp
-import sys
 
 
 class WarpingFunction(Parameterized):

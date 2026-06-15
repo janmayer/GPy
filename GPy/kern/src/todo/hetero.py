@@ -4,8 +4,6 @@
 from IPython.core.debugger import Tracer; debug_here=Tracer()
 from kernpart import Kernpart
 import numpy as np
-from ...util.linalg import tdot
-from ...core.mapping import Mapping
 import GPy
 
 class Hetero(Kernpart):

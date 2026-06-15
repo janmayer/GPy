@@ -4,7 +4,6 @@
 from kernpart import Kernpart
 import numpy as np
 from ...util.linalg import tdot
-from ...core.mapping import Mapping
 import GPy
 
 class Gibbs(Kernpart):
